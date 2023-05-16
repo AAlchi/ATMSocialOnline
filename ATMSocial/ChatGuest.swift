@@ -1,43 +1,58 @@
-//
-//  ChatGuest.swift
-//  ATM Social
-//
-//  Created by Thomas Niezyniecki on 5/11/23.
-//
-
 import SwiftUI
 
 struct ChatGuest: View {
-    @State var displayName = ""
+    @AppStorage("contraclt") var contract = false
+    @State var contractOn = false
+    @AppStorage("displayName") var displayName = ""
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .center) {
-                Text("Display Name")
-                    .font(.custom("American Typewriter", size: 25))
                 
                 VStack {
-                    TextField("Enter Display Name", text: $displayName)
-                        .frame(width: geometry.size.width * 0.95, height: geometry.size.width * 0.08)
-                        .font(.custom("American Typewriter", size: 25))
-                        .textFieldStyle(.roundedBorder)
+                    
+                    
+                    if contract == false {
+                        
+                        HStack {
+                            Text("Create Profile")
+                                .font(.system(size: geometry.size.width * 0.1))
+                                .padding()
+                        }
+                        HStack {
+                            Text("Choose a Display Name")
+                                .font(.system(size: geometry.size.width * 0.05))
+                                .padding()
+                        }
+                        HStack {
+                            TextField("", text: $displayName)
+                                .frame(width: geometry.size.width * 0.7)
+                                .textFieldStyle(.roundedBorder)
+                                .border(Color.gray)
+                        }
                         .padding()
-                }
-                .padding()
-                
-                NavigationLink(destination: ChooseChat()
-                    .navigationBarBackButtonHidden(true)
-                ) {
-                    Text("Chat")
-                        .frame(width: 150, height: 75)
-                        .background(.gray)
+                        
+                        Button("Chat Now") {
+                            contractOn = true
+                        }
+                        .frame(width: geometry.size.width * 0.4, height: 25)
                         .foregroundColor(.black)
-                        .font(.custom("American Typewriter", size: 25))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .font(.custom("American Typewriter", size: 20))
                         .padding()
-                }
-                
+                        .border(Color.black)
+                        .popover(isPresented: $contractOn) {
+                            Terms()
+                            Button("Agree") {
+                                contractOn = false
+                                contract = true
+                            }
+                        }
+                        
+                    } else {
+                        ChooseChat()
+                    }
+                    
             }
+                .frame(width: geometry.size.width * 1)
         }
     }
 }

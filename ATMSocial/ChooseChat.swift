@@ -10,28 +10,50 @@ import SwiftUI
 struct ChooseChat: View {
     @State private var people = ["Person 1", "Person 2", "Person 3"]
     @State var chattingWith = "Hello"
+    @AppStorage("displayName") var displayName = ""
     var body: some View {
         HStack {
-            Text("Friends")
-                .font(.custom("American Typewriter", size: 35))
-                .padding()
-            Spacer()
-            NavigationLink(destination: ContentView()
-                .navigationBarBackButtonHidden(true)
-            ) {
-                Text("Log Out")
-                    .frame(width: 150, height: 50)
-                    .foregroundColor(.black)
-                    .font(.custom("American Typewriter", size: 30))
+            VStack {
+                
+                HStack {
+                    
+                    Text("Welcome, \(displayName)")
+                        .font(.custom("American Typewriter", size: 25))
+                        .padding()
+                    Spacer()
+                    
+                }
+                Divider()
+                
+                HStack {
+                    
+                    Text("Friends")
+                        .font(.custom("American Typewriter", size: 20))
+                        .padding()
+                    
+                    Spacer()
+                    NavigationLink(destination: ContentView()
+                        .navigationBarBackButtonHidden(true)
+                    ) {
+                        Text("Log Out")
+                            .frame(width: 100, height: 20)
+                            .foregroundColor(.black)
+                            .font(.custom("American Typewriter", size: 10))
+                            .padding()
+                            .border(Color.gray)
+                    }
                     .padding()
+                    
+                }
             }
+            
         }
         List(people, id: \.self) { people in
             Button {
                 chattingWith = people
             } label: {
                 Text(people)
-                    .font(.custom("American Typewriter", size: 25))
+                    .font(.custom("American Typewriter", size: 15))
                     .foregroundColor(.black)
             }
             .frame(width: 100)
