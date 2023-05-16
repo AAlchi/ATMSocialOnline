@@ -18,7 +18,7 @@ struct Terms: View {
                             .padding()
                     }
                   
-                    Text("")
+                    Text("You currently don't have the authority needed in order to infringe this project because it's ours and not yours. The code was made by us and therefor cannot be infringed or copied by others in accordance to us.")
                         .padding()
                    
             }
