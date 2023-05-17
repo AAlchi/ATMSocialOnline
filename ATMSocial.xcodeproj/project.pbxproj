@@ -24,6 +24,7 @@
 		47AEF4102A13EAE500504177 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4082A13EAE500504177 /* LogIn.swift */; };
 		47AEF4122A13EAF500504177 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47AEF4112A13EAF500504177 /* GoogleService-Info.plist */; };
 		8CE6C2E92A14125E00AC3272 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6C2E82A14125E00AC3272 /* Terms.swift */; };
+		C90C0B972A157C6A00541931 /* ChoosePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90C0B962A157C6A00541931 /* ChoosePerson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		47AEF4082A13EAE500504177 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		47AEF4112A13EAF500504177 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CE6C2E82A14125E00AC3272 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
+		C90C0B962A157C6A00541931 /* ChoosePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePerson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				8CE6C2E82A14125E00AC3272 /* Terms.swift */,
 				47AEF3EE2A13E95900504177 /* Assets.xcassets */,
 				47AEF3F02A13E95900504177 /* Preview Content */,
+				C90C0B962A157C6A00541931 /* ChoosePerson.swift */,
 			);
 			path = ATMSocial;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				47AEF40B2A13EAE500504177 /* Home.swift in Sources */,
 				47AEF40E2A13EAE500504177 /* Signup.swift in Sources */,
 				47AEF3EB2A13E95800504177 /* ATMSocialApp.swift in Sources */,
+				C90C0B972A157C6A00541931 /* ChoosePerson.swift in Sources */,
 				8CE6C2E92A14125E00AC3272 /* Terms.swift in Sources */,
 				47AEF40A2A13EAE500504177 /* ChatFunction.swift in Sources */,
 			);

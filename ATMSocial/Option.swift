@@ -14,29 +14,37 @@ struct Option: View {
         GeometryReader { geometry in
             NavigationView {
                 VStack {
-                    HStack {
-                        Image("ATMSocial")
-                            .resizable()
-                            .frame(width: geometry.size.width * 0.15, height: geometry.size.width * 0.15)
+                    VStack {
+                        Text("ATM Social")
+                            .font(.system(size: 60))
                             .padding()
-                            .cornerRadius(50)
-                        Text("ATM Social").font(.system(size: 20))
+                        Text("YOUR most secure way to chat")
+                            .font(.system(size: 16))
+                            
                     }
-                    
+                    .padding()
+                    .foregroundColor(.white)
                     NavigationLink("Chat Now") {
-                        ChatGuest()
+                        ChooseChat()
                     }
-                    .frame(width: geometry.size.width * 0.40, height: 70)
-                    .background(.gray)
-                    .foregroundColor(.black)
+                    .frame(width: geometry.size.width * 0.40, height: 60)
+                    .background(.blue)
+                    .foregroundColor(.white)
                     .font(.custom("American Typewriter", size: 25))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding()
                     .foregroundColor(Color.white)
                     
+                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+                .background(Image("Background"))
             }
             .navigationViewStyle(.stack)
+            
+            
+
         }
     }
 }

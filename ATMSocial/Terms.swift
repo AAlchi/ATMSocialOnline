@@ -18,11 +18,12 @@ struct Terms: View {
                             .padding()
                     }
                   
-                    Text("You currently don't have the authority needed in order to infringe this project because it's ours and not yours. The code was made by us and therefor cannot be infringed or copied by others in accordance to us.")
+                    Text("Copyright @2023. ATM Social is to be used by those who use it wisely and logically. Anyone can and will be caught using the app for bad intent or malicious purposes. You currently don't have the authority needed in order to infringe this project because it's ours and not yours. The code was made by us and therefor cannot be infringed or copied by others in accordance to us.")
                         .padding()
                    
             }
                 .frame(width: geometry.size.width * 1)
+                .foregroundColor(.black)
         }
     }
 }
