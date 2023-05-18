@@ -193,6 +193,7 @@ struct Home: View {
                         .background(.blue)
                         .cornerRadius(geometry.size.width * 1)
                         .foregroundColor(.white)
+                        .padding()
                     }
                 }
                 //                Button("Send Other") {

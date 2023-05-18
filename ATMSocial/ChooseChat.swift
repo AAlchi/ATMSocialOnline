@@ -48,21 +48,21 @@ struct ChooseChat: View {
                             }
                         }
                         Divider()
-                        HStack {
-                            Text("Friends")
-                                .font(.custom("American Typewriter", size: 20))
-                                .padding()
-                            Spacer()
-                            NavigationLink("Add Friend") {
-                                AddPerson() 
-                            }
-                            .navigationBarBackButtonHidden(true)
-                            .frame(width: 100, height: 45)
-                            .border(.gray)
-                            .font(.custom("American typewriter", size: 19))
-                            .foregroundColor(.white)
-                            .padding()
-                        }
+//                        HStack {
+//                            Text("Friends")
+//                                .font(.custom("American Typewriter", size: 20))
+//                                .padding()
+//                            Spacer()
+//                            NavigationLink("Add Friend") {
+//                                AddPerson()
+//                            }
+//                            .navigationBarBackButtonHidden(true)
+//                            .frame(width: 100, height: 45)
+//                            .border(.gray)
+//                            .font(.custom("American typewriter", size: 19))
+//                            .foregroundColor(.white)
+//                            .padding()
+//                        }
                     }
                     .foregroundColor(.white)
                 }
