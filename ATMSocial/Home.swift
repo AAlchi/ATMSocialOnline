@@ -37,9 +37,9 @@ struct Home: View {
             if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapShotArray {
                     if let data = child.value as? [String: Any],
+                       let text = data["text"] as? String,
                        let receiver = data["reciever"] as? String,
                        let dateSent = data["dateSent"] as? String,
-                       let text = data["text"] as? String,
                        let sender = data["sender"] as? String,
                        let type = data["type"] as? String {
                         
@@ -84,11 +84,11 @@ struct Home: View {
                         VStack {
                             ForEach(chats, id: \.self) {messages in
                                 HStack {
-                                    if (messages.receiver != displayName) {
+                                    if (messages.receiver == displayName) {
                                         HStack {
                                             
                                             Text("\(date)")
-                                            Text("\(messages.text)")
+                                            Text("\(messages.sender): \(messages.text)")
                                                 .frame(width: 500)
                                                 .padding()
                                                 .font(.system(size: 20))
@@ -145,19 +145,18 @@ struct Home: View {
                                     }
                                 }
                             }
+                            .onChange(of: chats.count) { _ in
+                                proxy.scrollTo(chats.count - 1)
+                            }
                             .padding()
                             Spacer()
                         }
                         .padding()
                         .onAppear {
-                            chats.removeAll() // Clear the chats array
+                            chats.removeAll()
                             
-                            DispatchQueue.main.async {
-                                withAnimation {
-                                    if let lastMessage = chats.last {
-                                        proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                                    }
-                                }
+                            withAnimation {
+                                proxy.scrollTo(chats.last?.id, anchor: .bottom)
                             }
                             
                             loadDataFromFirebase()
@@ -186,7 +185,7 @@ struct Home: View {
                             let timedate = Date()
                             
                             
-                            let allTheData = ["reciever": "\(displayName)", "sender": "\(chattingWith)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
+                            let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
                             
                             let newthedb = thedb.child("chats")
                             let newnewthedb = newthedb.childByAutoId()

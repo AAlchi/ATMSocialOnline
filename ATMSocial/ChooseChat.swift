@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChooseChat: View {
-    @State private var people = ["Person 1", "Person 2", "Person 3"]
+    @State private var people = ["Group Chat", "Option", "Option"]
     @State var chattingWith = "Hello"
     @AppStorage("displayName") var displayName = ""
     @State private var gestureOnOne = false

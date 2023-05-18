@@ -35,8 +35,8 @@ struct Option: View {
                     
                     
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Image("Background"))
             }
             .navigationViewStyle(.stack)

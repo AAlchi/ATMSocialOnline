@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChoosePerson: View {
-    @State var people = ["Hello"]
+    @State var people = ["Ali", "Thomas", "Matthew"]
     @AppStorage("displayName") var displayName = ""
     @State var displaysName = ""
     @State private var AddPersonPage = false
