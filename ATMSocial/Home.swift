@@ -143,6 +143,7 @@ struct Home: View {
                 HStack {
                     TextField("Chat Away", text: $message)
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.3)
+                        .font(.custom("American Typewriter", size: 20))
                         .textFieldStyle(.roundedBorder)
                     ZStack {
                         Button(action: {

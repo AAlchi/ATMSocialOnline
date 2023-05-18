@@ -31,6 +31,7 @@ struct ChooseChat: View {
                             }
                             .frame(width: 100, height: 45)
                             .border(.gray)
+                            .font(.custom("American Typewriter", size: 20))
                             .foregroundColor(.white)
                             .padding()
                             .alert(isPresented: $gestureOnOne) {
@@ -58,6 +59,7 @@ struct ChooseChat: View {
                             .navigationBarBackButtonHidden(true)
                             .frame(width: 100, height: 45)
                             .border(.gray)
+                            .font(.custom("American typewriter", size: 19))
                             .foregroundColor(.white)
                             .padding()
                         }
