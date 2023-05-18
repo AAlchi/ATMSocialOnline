@@ -24,9 +24,12 @@ struct Home: View {
     
     @AppStorage("displayName") var displayName = ""
 
+
+    
     
     
     func loadDataFromFirebase() {
+
         let database = Database.database().reference()
         database.child("chats").observe(.value) { snapshot in
             
@@ -149,17 +152,24 @@ struct Home: View {
                         }
                         .padding()
                         .onAppear {
-                            chats = []
-
-                            loadDataFromFirebase()
+                            chats.removeAll() // Clear the chats array
                             
-                          
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    if let lastMessage = chats.last {
+                                        proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                                    }
+                                }
+                            }
+                            
+                            loadDataFromFirebase()
                         }
-                        
                         
                         
                     }
                     .onAppear {
+                        chats.removeAll()
+
                         DispatchQueue.main.async {
                             withAnimation {
                                 if let lastMessage = chats.last {
@@ -188,6 +198,7 @@ struct Home: View {
                             let newnewthedb = newthedb.childByAutoId()
                             newnewthedb.setValue(allTheData)
                             message = ""
+                            chats.removeAll()
                             
                         }, label: {
                             Image(systemName: "arrow.up")
