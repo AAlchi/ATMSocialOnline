@@ -29,9 +29,10 @@ struct Home: View {
     
     
     func loadDataFromFirebase() {
-
         let database = Database.database().reference()
         database.child("chats").observe(.value) { snapshot in
+
+            chats.removeAll()
             
             if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapShotArray {
@@ -44,11 +45,7 @@ struct Home: View {
                         
                         let chat = Chat(dateSent: dateSent, receiver: receiver, sender: sender, text: text, type: type)
                         
-                        if (bool == false) {
-                            chats.append(chat)
-                        } else {
-                            return
-                        }
+                        chats.append(chat)
                     }
                 }
             }
@@ -56,8 +53,7 @@ struct Home: View {
             print("These are now the chats: \(chats)")
         }
     }
-    
-    
+
     
     //database
     let thedb = Database.database().reference()
@@ -69,6 +65,8 @@ struct Home: View {
     
     @State var chattingWith:String
     @State var date = ""
+    
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -169,13 +167,9 @@ struct Home: View {
                     }
                     .onAppear {
                         chats.removeAll()
-
-                        DispatchQueue.main.async {
-                            withAnimation {
-                                if let lastMessage = chats.last {
-                                    proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                                }
-                            }
+                        
+                        withAnimation {
+                            proxy.scrollTo(chats.last?.id, anchor: .bottom)
                         }
                     }
                     
@@ -198,7 +192,6 @@ struct Home: View {
                             let newnewthedb = newthedb.childByAutoId()
                             newnewthedb.setValue(allTheData)
                             message = ""
-                            chats.removeAll()
                             
                         }, label: {
                             Image(systemName: "arrow.up")
