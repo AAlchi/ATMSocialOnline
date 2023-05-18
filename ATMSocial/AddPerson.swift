@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+
 struct AddPerson: View {
-    @AppStorage("NewPerson") var newPerson = ""
+    @AppStorage("Friends") var friends: [String] = []
+    @State var newPerson = ""
     var body: some View {
         TextField("Enter username here", text: $newPerson)
             .textFieldStyle(.roundedBorder)
@@ -16,5 +18,12 @@ struct AddPerson: View {
         NavigationLink("Add Friend") {
             ChooseChat()
         }
+        .background(
+            Button(action: {
+                friends.append("New String")
+            }, label: {
+                
+            })
+        )
     }
 }
