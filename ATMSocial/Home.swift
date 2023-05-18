@@ -167,6 +167,7 @@ struct Home: View {
                     }
                     
                     
+                    
                 }
                 HStack {
                     TextField("Chat Away", text: $message)
