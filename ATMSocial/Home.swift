@@ -75,14 +75,14 @@ struct Home: View {
                 ScrollView(){
                     Spacer()
                     VStack {
-                        ForEach(chats, id: \.self) {messages in
+                        ForEach(chats, id: \.self) { messages in
                             HStack {
                                 if (messages.type == "one") {
                                     HStack {
                                         
                                         Text("\(date)")
                                         Text("\(messages.text)")
-                                            .frame(width: 500)
+                                            .frame(width: geometry.size.width * 1,  height: 10)
                                             .padding()
                                             .font(.system(size: 20))
                                             .foregroundColor(Color.white)
@@ -104,13 +104,14 @@ struct Home: View {
                                             )
                                         
                                     }
+                                    .frame(width: geometry.size.width * 1, height: geometry.size.height * 0.01, alignment: .trailing)
                                     .padding()
                                     Spacer()
                                 } else {
                                     HStack {
                                         Spacer()
                                         Text("\(messages.text)")
-                                            .frame(width: 500)
+                                            .frame(width: geometry.size.width * 0.5, alignment: .leading)
                                             .padding()
                                             .font(.system(size: 20))
                                             .foregroundColor(Color.white)
@@ -133,11 +134,13 @@ struct Home: View {
                                         Text("\(date)")
                                         
                                     }
-                                    
+                                    .padding()
                                     
                                 }
                             }
+                            .padding()
                         }
+                        .frame(width: geometry.size.width * 1, height: geometry.size.height * 0.1, alignment: .leading)
                         .padding()
                         Spacer()
                     }
@@ -173,6 +176,7 @@ struct Home: View {
                         .background(.blue)
                         .cornerRadius(geometry.size.width * 1)
                         .foregroundColor(.white)
+                        .padding()
                     }
                 }
 //                Button("Send Other") {
