@@ -143,6 +143,7 @@ struct Home: View {
                 HStack {
                     TextField("Chat Away", text: $message)
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.3)
+                        .font(.custom("American Typewriter", size: 20))
                         .textFieldStyle(.roundedBorder)
                     ZStack {
                         Button(action: {
@@ -166,14 +167,13 @@ struct Home: View {
                         .foregroundColor(.white)
                     }
                 }
-                Button("Send Other") {
-                    
-                }
-                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.02)
-                .padding()
-                .background(.blue)
-                .foregroundColor(.black)
-                .cornerRadius(5)
+//                Button("Send Other") {
+//
+//                }
+//                .font(.custom("American Typewriter", size: 30))
+//                .background(.blue)
+//                .foregroundColor(.black)
+//                .cornerRadius(5)
             }
         }
     }
