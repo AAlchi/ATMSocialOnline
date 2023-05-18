@@ -22,6 +22,9 @@ struct Home: View {
     @State var chats: [Chat] = []
     @State var bool = false
     
+    @AppStorage("displayName") var displayName = ""
+
+    
     
     func loadDataFromFirebase() {
         let database = Database.database().reference()
@@ -80,7 +83,7 @@ struct Home: View {
                         VStack {
                             ForEach(chats, id: \.self) {messages in
                                 HStack {
-                                    if (messages.type == "one") {
+                                    if (messages.receiver != displayName) {
                                         HStack {
                                             
                                             Text("\(date)")
@@ -178,7 +181,7 @@ struct Home: View {
                             let timedate = Date()
                             
                             
-                            let allTheData = ["reciever": "You", "sender": "\(chattingWith)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
+                            let allTheData = ["reciever": "\(displayName)", "sender": "\(chattingWith)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
                             
                             let newthedb = thedb.child("chats")
                             let newnewthedb = newthedb.childByAutoId()
@@ -196,13 +199,7 @@ struct Home: View {
                         .padding()
                     }
                 }
-                //                Button("Send Other") {
-                //
-                //                }
-                //                .font(.custom("American Typewriter", size: 30))
-                //                .background(.blue)
-                //                .foregroundColor(.black)
-                //                .cornerRadius(5)
+              
                 
                 
             }
