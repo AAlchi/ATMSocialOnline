@@ -58,6 +58,7 @@ struct ChooseChat: View {
                                     })
                                 )
                             }
+                            .padding()
                             
                         }
                     }

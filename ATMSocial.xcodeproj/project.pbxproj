@@ -17,7 +17,6 @@
 		47AEF4092A13EAE500504177 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4012A13EAE500504177 /* Logout.swift */; };
 		47AEF40A2A13EAE500504177 /* ChatFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4022A13EAE500504177 /* ChatFunction.swift */; };
 		47AEF40B2A13EAE500504177 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4032A13EAE500504177 /* Home.swift */; };
-		47AEF40C2A13EAE500504177 /* ChatGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4042A13EAE500504177 /* ChatGuest.swift */; };
 		47AEF40D2A13EAE500504177 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4052A13EAE500504177 /* Option.swift */; };
 		47AEF40E2A13EAE500504177 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4062A13EAE500504177 /* Signup.swift */; };
 		47AEF40F2A13EAE500504177 /* ChooseChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4072A13EAE500504177 /* ChooseChat.swift */; };
@@ -36,7 +35,6 @@
 		47AEF4012A13EAE500504177 /* Logout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		47AEF4022A13EAE500504177 /* ChatFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFunction.swift; sourceTree = "<group>"; };
 		47AEF4032A13EAE500504177 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		47AEF4042A13EAE500504177 /* ChatGuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGuest.swift; sourceTree = "<group>"; };
 		47AEF4052A13EAE500504177 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		47AEF4062A13EAE500504177 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		47AEF4072A13EAE500504177 /* ChooseChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseChat.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				47AEF4022A13EAE500504177 /* ChatFunction.swift */,
-				47AEF4042A13EAE500504177 /* ChatGuest.swift */,
 				47AEF4072A13EAE500504177 /* ChooseChat.swift */,
 				47AEF4032A13EAE500504177 /* Home.swift */,
 				47AEF4082A13EAE500504177 /* LogIn.swift */,
@@ -189,7 +186,6 @@
 				47AEF4092A13EAE500504177 /* Logout.swift in Sources */,
 				47AEF40D2A13EAE500504177 /* Option.swift in Sources */,
 				47AEF40F2A13EAE500504177 /* ChooseChat.swift in Sources */,
-				47AEF40C2A13EAE500504177 /* ChatGuest.swift in Sources */,
 				47AEF4102A13EAE500504177 /* LogIn.swift in Sources */,
 				47AEF40B2A13EAE500504177 /* Home.swift in Sources */,
 				47AEF40E2A13EAE500504177 /* Signup.swift in Sources */,
