@@ -49,11 +49,11 @@ struct ChooseChat: View {
                             .alert(isPresented: $gestureOnOne) {
                                 Alert(
                                     title: Text("Are You Sure?"),
-                                    primaryButton: .destructive(Text("Yup"), action: {
+                                    primaryButton: .destructive(Text("Yes"), action: {
                                         gestureOnOne = false
                                         displayName = ""
                                     }),
-                                    secondaryButton:  .cancel(Text("Nope"), action: {
+                                    secondaryButton:  .cancel(Text("No"), action: {
                                         gestureOnOne = false
                                     })
                                 )
