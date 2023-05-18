@@ -11,6 +11,39 @@ import FirebaseDatabase
 
 
 struct Home: View {
+    
+    func loadDataFromFirebase() {
+        
+        let database = Database.database().reference()
+        
+        
+        
+        database.child("chats").observe(.value) { snapShot  in
+            
+            let snapShotArray = snapShot.children.allObjects as! [DataSnapshot]
+           
+//            let dateSent = snapShotArray[0].value
+//
+//            let reciever = snapShotArray[1].value as! String
+//
+//            let sender = snapShotArray[2].value as! String
+//
+//            let text = snapShotArray[3].value as! String
+//
+//            let type = snapShotArray[4].value as! String
+//
+//
+//            self.allMessagesTwo = [ChatFunction(reciever: "\(reciever)", sender: "\(sender)", text: "\(text)", dateSent: "\(dateSent)", type: "\(type)")]
+            
+           
+            let allDataChat = ChatFunction(reciever: "Hello", sender: "Hello", text: "Hello", dateSent: Date(), type: "one")
+            
+        }
+    }
+    
+    
+    
+    
     //database
     let thedb = Database.database().reference()
     
@@ -36,7 +69,7 @@ struct Home: View {
                     VStack {
                         ForEach(allMessagesTwo) {messages in
                             HStack {
-                                if (messages.type == "1") {
+                                if (messages.type == "one") {
                                     HStack {
                                         
                                         Text("\(date)")
@@ -101,6 +134,11 @@ struct Home: View {
                         Spacer()
                     }
                     .padding()
+                    .onAppear {
+                        loadDataFromFirebase()
+                        
+                        
+                    }
                 }
                 HStack {
                     TextField("Chat Away", text: $message)
@@ -138,4 +176,5 @@ struct Home: View {
             }
         }
     }
+    
 }
