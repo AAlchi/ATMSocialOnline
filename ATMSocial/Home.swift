@@ -128,14 +128,13 @@ struct Home: View {
                         .foregroundColor(.white)
                     }
                 }
-                Button("Send Other") {
-                    
-                }
-                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.02)
-                .padding()
-                .background(.blue)
-                .foregroundColor(.black)
-                .cornerRadius(5)
+//                Button("Send Other") {
+//
+//                }
+//                .font(.custom("American Typewriter", size: 30))
+//                .background(.blue)
+//                .foregroundColor(.black)
+//                .cornerRadius(5)
             }
         }
     }
