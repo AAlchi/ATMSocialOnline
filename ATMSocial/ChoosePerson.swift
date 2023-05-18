@@ -112,7 +112,7 @@ struct ChoosePerson: View {
                         Button {
                             AddPersonPage = true
                         } label: {
-                            Text("Add People")
+                            Text("Add User")
                         }
                         .frame(width: 100, height: 35)
                         .foregroundColor(.white)
