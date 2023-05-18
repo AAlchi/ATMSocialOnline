@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-struct ChatFunction: Identifiable {
+struct ChatFunction {
     let id = UUID()
     let reciever: String
     let sender: String

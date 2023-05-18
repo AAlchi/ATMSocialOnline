@@ -8,40 +8,48 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseDatabase
-
+struct Chat: Hashable {
+    let dateSent: String
+    let receiver: String
+    let sender: String
+    let text: String
+    let type: String
+}
 
 struct Home: View {
     
+    @State var chats: [Chat] = []
+    @State var bool = false
+
+
     func loadDataFromFirebase() {
-        
         let database = Database.database().reference()
-        
-        
-        
-        database.child("chats").observe(.value) { snapShot  in
+        database.child("chats").observe(.value) { snapshot in
+
+            if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in snapShotArray {
+                    if let data = child.value as? [String: Any],
+                       let receiver = data["reciever"] as? String,
+                       let dateSent = data["dateSent"] as? String,
+                       let text = data["text"] as? String,
+                       let sender = data["sender"] as? String,
+                       let type = data["type"] as? String {
+                        
+                        let chat = Chat(dateSent: dateSent, receiver: receiver, sender: sender, text: text, type: type)
+                        
+                        if (bool == false) {
+                            chats.append(chat)
+                        } else {
+                            return
+                        }
+                    }
+                }
+            }
             
-            let snapShotArray = snapShot.children.allObjects as! [DataSnapshot]
-           
-//            let dateSent = snapShotArray[0].value
-//
-//            let reciever = snapShotArray[1].value as! String
-//
-//            let sender = snapShotArray[2].value as! String
-//
-//            let text = snapShotArray[3].value as! String
-//
-//            let type = snapShotArray[4].value as! String
-//
-//
-//            self.allMessagesTwo = [ChatFunction(reciever: "\(reciever)", sender: "\(sender)", text: "\(text)", dateSent: "\(dateSent)", type: "\(type)")]
-            
-           
-            let allDataChat = ChatFunction(reciever: "Hello", sender: "Hello", text: "Hello", dateSent: Date(), type: "one")
-            
+            print(chats)
         }
     }
-    
-    
+
     
     
     //database
@@ -67,7 +75,7 @@ struct Home: View {
                 ScrollView(){
                     Spacer()
                     VStack {
-                        ForEach(allMessagesTwo) {messages in
+                        ForEach(chats, id: \.self) {messages in
                             HStack {
                                 if (messages.type == "one") {
                                     HStack {
