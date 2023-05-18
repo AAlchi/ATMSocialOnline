@@ -18,7 +18,7 @@ struct Option: View {
                         Text("ATM Social")
                             .font(.system(size: 60))
                             .padding()
-                        Text("YOUR most secure way to chat")
+                        Text("A secure way to chat")
                             .font(.system(size: 16))
                             
                     }
