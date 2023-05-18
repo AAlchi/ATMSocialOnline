@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseCore
 import FirebaseDatabase
 struct Chat: Hashable {
+    let id = UUID()
     let dateSent: String
     let receiver: String
     let sender: String
@@ -20,12 +21,12 @@ struct Home: View {
     
     @State var chats: [Chat] = []
     @State var bool = false
-
-
+    
+    
     func loadDataFromFirebase() {
         let database = Database.database().reference()
         database.child("chats").observe(.value) { snapshot in
-
+            
             if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapShotArray {
                     if let data = child.value as? [String: Any],
@@ -46,10 +47,10 @@ struct Home: View {
                 }
             }
             
-            print(chats)
+            print("These are now the chats: \(chats)")
         }
     }
-
+    
     
     
     //database
@@ -72,81 +73,100 @@ struct Home: View {
                     Spacer()
                 }
                 Divider()
-                ScrollView(){
-                    Spacer()
-                    VStack {
-                        ForEach(chats, id: \.self) {messages in
-                            HStack {
-                                if (messages.type == "one") {
-                                    HStack {
-                                        
-                                        Text("\(date)")
-                                        Text("\(messages.text)")
-                                            .frame(width: 500)
-                                            .padding()
-                                            .font(.system(size: 20))
-                                            .foregroundColor(Color.white)
-                                            .background(Color.green)
-                                            .cornerRadius(20)
-                                            .gesture(
-                                                DragGesture()
-                                                    .onEnded { action in
-                                                        withAnimation {
-                                                            
-                                                            if action.translation.width > 0 {
-                                                                date = "Date: \(messages.dateSent)"
-                                                            } else {
-                                                                date = ""
+                ScrollViewReader { proxy in
+                    
+                    ScrollView(){
+                        Spacer()
+                        VStack {
+                            ForEach(chats, id: \.self) {messages in
+                                HStack {
+                                    if (messages.type == "one") {
+                                        HStack {
+                                            
+                                            Text("\(date)")
+                                            Text("\(messages.text)")
+                                                .frame(width: 500)
+                                                .padding()
+                                                .font(.system(size: 20))
+                                                .foregroundColor(Color.white)
+                                                .background(Color.green)
+                                                .cornerRadius(20)
+                                                .gesture(
+                                                    DragGesture()
+                                                        .onEnded { action in
+                                                            withAnimation {
+                                                                
+                                                                if action.translation.width > 0 {
+                                                                    date = "Date: \(messages.dateSent)"
+                                                                } else {
+                                                                    date = ""
+                                                                }
                                                             }
+                                                            
                                                         }
-                                                        
-                                                    }
-                                            )
-                                        
-                                    }
-                                    .padding()
-                                    Spacer()
-                                } else {
-                                    HStack {
+                                                )
+                                            
+                                        }
+                                        .padding()
                                         Spacer()
-                                        Text("\(messages.text)")
-                                            .frame(width: 500)
-                                            .padding()
-                                            .font(.system(size: 20))
-                                            .foregroundColor(Color.white)
-                                            .background(Color.blue)
-                                            .cornerRadius(20)
-                                            .gesture(
-                                                DragGesture()
-                                                    .onEnded { action in
-                                                        withAnimation {
-                                                            
-                                                            
-                                                            if action.translation.width < 0 {
-                                                                date = "Date: \(messages.dateSent)"
-                                                            } else {
-                                                                date = ""
+                                    } else {
+                                        HStack {
+                                            Spacer()
+                                            Text("\(messages.text)")
+                                                .frame(width: 500)
+                                                .padding()
+                                                .font(.system(size: 20))
+                                                .foregroundColor(Color.white)
+                                                .background(Color.blue)
+                                                .cornerRadius(20)
+                                                .gesture(
+                                                    DragGesture()
+                                                        .onEnded { action in
+                                                            withAnimation {
+                                                                
+                                                                
+                                                                if action.translation.width < 0 {
+                                                                    date = "Date: \(messages.dateSent)"
+                                                                } else {
+                                                                    date = ""
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                            )
-                                        Text("\(date)")
+                                                )
+                                            Text("\(date)")
+                                            
+                                        }
+                                        
                                         
                                     }
-                                    
-                                    
+                                }
+                            }
+                            .padding()
+                            Spacer()
+                        }
+                        .padding()
+                        .onAppear {
+                            chats = []
+
+                            loadDataFromFirebase()
+                            
+                          
+                        }
+                        
+                        
+                        
+                    }
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            withAnimation {
+                                if let lastMessage = chats.last {
+                                    proxy.scrollTo(lastMessage.id, anchor: .bottom)
                                 }
                             }
                         }
-                        .padding()
-                        Spacer()
                     }
-                    .padding()
-                    .onAppear {
-                        loadDataFromFirebase()
-                        
-                        
-                    }
+                    
+                    
                 }
                 HStack {
                     TextField("Chat Away", text: $message)
@@ -175,15 +195,19 @@ struct Home: View {
                         .foregroundColor(.white)
                     }
                 }
-//                Button("Send Other") {
-//
-//                }
-//                .font(.custom("American Typewriter", size: 30))
-//                .background(.blue)
-//                .foregroundColor(.black)
-//                .cornerRadius(5)
+                //                Button("Send Other") {
+                //
+                //                }
+                //                .font(.custom("American Typewriter", size: 30))
+                //                .background(.blue)
+                //                .foregroundColor(.black)
+                //                .cornerRadius(5)
+                
+                
             }
         }
     }
     
 }
+
+

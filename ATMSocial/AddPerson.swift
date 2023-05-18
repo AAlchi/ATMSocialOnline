@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct AddPerson: View {
-    @AppStorage("Friends") var friends: [String] = []
+//    @AppStorage("Friends") var friends: [String] = []
     @State var newPerson = ""
     var body: some View {
         TextField("Enter username here", text: $newPerson)
@@ -20,7 +20,7 @@ struct AddPerson: View {
         }
         .background(
             Button(action: {
-                friends.append("New String")
+//                friends.append("New String")
             }, label: {
                 
             })
