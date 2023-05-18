@@ -14,7 +14,6 @@
 		47AEF3FC2A13EAA200504177 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 47AEF3FB2A13EAA200504177 /* FirebaseDatabase */; };
 		47AEF3FE2A13EAA200504177 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 47AEF3FD2A13EAA200504177 /* FirebaseDatabaseSwift */; };
 		47AEF4002A13EAA200504177 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 47AEF3FF2A13EAA200504177 /* FirebaseStorage */; };
-		47AEF4092A13EAE500504177 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4012A13EAE500504177 /* Logout.swift */; };
 		47AEF40A2A13EAE500504177 /* ChatFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4022A13EAE500504177 /* ChatFunction.swift */; };
 		47AEF40B2A13EAE500504177 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4032A13EAE500504177 /* Home.swift */; };
 		47AEF40D2A13EAE500504177 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AEF4052A13EAE500504177 /* Option.swift */; };
@@ -32,7 +31,6 @@
 		47AEF3EC2A13E95800504177 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		47AEF3EE2A13E95900504177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47AEF3F12A13E95900504177 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		47AEF4012A13EAE500504177 /* Logout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		47AEF4022A13EAE500504177 /* ChatFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFunction.swift; sourceTree = "<group>"; };
 		47AEF4032A13EAE500504177 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		47AEF4052A13EAE500504177 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				47AEF4072A13EAE500504177 /* ChooseChat.swift */,
 				47AEF4032A13EAE500504177 /* Home.swift */,
 				47AEF4082A13EAE500504177 /* LogIn.swift */,
-				47AEF4012A13EAE500504177 /* Logout.swift */,
 				47AEF4112A13EAF500504177 /* GoogleService-Info.plist */,
 				47AEF4052A13EAE500504177 /* Option.swift */,
 				47AEF4062A13EAE500504177 /* Signup.swift */,
@@ -183,7 +180,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AEF3ED2A13E95800504177 /* ContentView.swift in Sources */,
-				47AEF4092A13EAE500504177 /* Logout.swift in Sources */,
 				47AEF40D2A13EAE500504177 /* Option.swift in Sources */,
 				47AEF40F2A13EAE500504177 /* ChooseChat.swift in Sources */,
 				47AEF4102A13EAE500504177 /* LogIn.swift in Sources */,
