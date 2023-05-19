@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseDatabase
+
 struct Chat: Hashable {
     let id = UUID()
     let dateSent: String
@@ -144,15 +145,17 @@ struct Home: View {
                                         
                                     }
                                 }
+                                
                             }
-                            .onChange(of: chats.count) { _ in
-                                proxy.scrollTo(chats.count - 1)
-                            }
+
+                            
                             .padding()
                             Spacer()
                         }
                         .padding()
                         .onAppear {
+                            
+                            
                             chats.removeAll()
                             
                             withAnimation {

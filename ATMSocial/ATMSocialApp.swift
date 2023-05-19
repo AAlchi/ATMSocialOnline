@@ -1,6 +1,6 @@
 import SwiftUI
 import FirebaseCore
-
+import FirebaseDatabase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -11,7 +11,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct ATMSocialApp: App {
+struct MyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {

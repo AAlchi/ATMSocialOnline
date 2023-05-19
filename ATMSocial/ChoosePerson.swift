@@ -14,9 +14,12 @@ struct ChoosePerson: View {
     @State private var AddPersonPage = false
     @State var contract = false
     @State var contractOn = false
+     
+
     
     var body: some View {
         
+     
         if (AddPersonPage == true) {
 
                 
@@ -51,7 +54,6 @@ struct ChoosePerson: View {
                                             displayName = displaysName
                                             contractOn = true
                                             AddPersonPage = false
-                                            people.append(displaysName)
                                             
                                         }
                                         .frame(width: geometry.size.width * 0.4, height: 25)

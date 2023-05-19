@@ -16,5 +16,3 @@ struct ChatFunction {
     let dateSent: Date
     let type: String
 }
-
-
