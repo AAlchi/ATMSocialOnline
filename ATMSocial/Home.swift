@@ -85,7 +85,7 @@ struct Home: View {
                         VStack {
                             ForEach(chats, id: \.self) {messages in
                                 HStack {
-                                    if (messages.receiver == displayName) {
+                                    if (messages.sender != displayName) {
                                         HStack {
                                             
                                             Text("\(date)")
