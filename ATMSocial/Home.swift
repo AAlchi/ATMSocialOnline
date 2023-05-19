@@ -22,7 +22,9 @@ struct Home: View {
     
     @State var chats: [Chat] = []
     @State var bool = false
-    
+    @Namespace var bottomPageScroll
+    @Namespace var topPageScroll
+
     @AppStorage("displayName") var displayName = ""
 
 
@@ -66,7 +68,7 @@ struct Home: View {
     
     @State var chattingWith:String
     @State var date = ""
-    
+
 
     var body: some View {
         GeometryReader { geometry in
@@ -83,6 +85,12 @@ struct Home: View {
                     ScrollView(){
                         Spacer()
                         VStack {
+                                
+                            Button("") {
+                                
+                            }
+                            .id(bottomPageScroll)
+                            
                             ForEach(chats, id: \.self) {messages in
                                 HStack {
                                     if (messages.sender != displayName) {
@@ -143,6 +151,7 @@ struct Home: View {
                                         }
                                         
                                         
+                                        
                                     }
                                 }
                                 
@@ -155,7 +164,7 @@ struct Home: View {
                         .padding()
                         .onAppear {
                             
-                            
+                           
                             chats.removeAll()
                             
                             withAnimation {
@@ -165,14 +174,24 @@ struct Home: View {
                             loadDataFromFirebase()
                         }
                         
+                        Button("") {
+                        }
+                        .id(bottomPageScroll)
                         
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            proxy.scrollTo(bottomPageScroll)
+                        }
                     }
                     .onAppear {
                         chats.removeAll()
                         
                         withAnimation {
-                            proxy.scrollTo(chats.last?.id, anchor: .bottom)
+                            proxy.scrollTo(bottomPageScroll)
                         }
+                        
+                       
                     }
                     
                     
@@ -204,6 +223,7 @@ struct Home: View {
                         .cornerRadius(geometry.size.width * 1)
                         .foregroundColor(.white)
                         .padding()
+                       
                     }
                 }
               
