@@ -225,6 +225,14 @@ struct Home: View {
                         .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.3)
                         .font(.custom("American Typewriter", size: 20))
                         .textFieldStyle(.roundedBorder)
+                        .onSubmit {
+                            let timedate = Date()
+                            let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
+                            let newthedb = thedb.child("chats")
+                            let newnewthedb = newthedb.childByAutoId()
+                            newnewthedb.setValue(allTheData)
+                            message = ""
+                        }
                     ZStack {
                         Button(action: {
                             let timedate = Date()
