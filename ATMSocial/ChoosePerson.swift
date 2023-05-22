@@ -57,10 +57,10 @@ struct ChoosePerson: View {
                                             
                                         }
                                         .frame(width: geometry.size.width * 0.4, height: 25)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                         .font(.custom("American Typewriter", size: 20))
                                         .padding()
-                                        .border(Color.gray)
+                                        .border(Color.black)
                                         .popover(isPresented: $contractOn) {
                                             Terms()
                                             Button("Agree") {
@@ -81,7 +81,7 @@ struct ChoosePerson: View {
                         }
                             .frame(width: geometry.size.width * 1)
                             .background(Image("Background"))
-                            .foregroundColor(.white)
+                            .foregroundColor(.gray)
                         
                     }
     
@@ -117,10 +117,10 @@ struct ChoosePerson: View {
                             Text("Add User")
                         }
                         .frame(width: 100, height: 35)
-                        .foregroundColor(.white)
-                        .font(.custom("American Typewriter", size: 15))
+                        .foregroundColor(.black)
+                        .font(.custom("American Typewriter", size: 20))
                         .padding()
-                        .border(Color.gray)
+                        .border(Color.black)
                         .popover(isPresented: $contractOn) {
                             Terms()
                             Button("Agree") {
@@ -133,7 +133,7 @@ struct ChoosePerson: View {
                         
                     }
                 }
-                .foregroundColor(.white)
+                .foregroundColor(.gray)
             }
             List(people, id: \.self) { people in
                 Button {

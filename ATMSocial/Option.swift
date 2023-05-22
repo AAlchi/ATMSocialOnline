@@ -23,13 +23,13 @@ struct Option: View {
                             
                     }
                     .padding()
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
                     NavigationLink("Chat Now") {
                         ChooseChat()
                     }
                     .frame(width: geometry.size.width * 0.40, height: 60)
-                    .border(.gray)
-                    .foregroundColor(.white)
+                    .border(.black)
+                    .foregroundColor(.black)
                     .font(.custom("American Typewriter", size: 25))
                     
                     

@@ -30,9 +30,9 @@ struct ChooseChat: View {
                                 Text("Log Out")
                             }
                             .frame(width: 100, height: 45)
-                            .border(.gray)
+                            .border(.black)
                             .font(.custom("American Typewriter", size: 20))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .padding()
                             .alert(isPresented: $gestureOnOne) {
                                 Alert(
@@ -64,7 +64,7 @@ struct ChooseChat: View {
 //                            .padding()
 //                        }
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
                 }
                 List(people, id: \.self) { people in
                     Button {
@@ -88,7 +88,7 @@ struct ChooseChat: View {
             }
         }
         .background(Image("Background"))
-        .foregroundColor(.white)
+        .foregroundColor(.gray)
         
         
     }
