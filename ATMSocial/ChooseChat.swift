@@ -30,9 +30,9 @@ struct ChooseChat: View {
                                 Text("Log Out")
                             }
                             .frame(width: 100, height: 45)
-                            .border(.black)
+                            .border(.white)
                             .font(.custom("American Typewriter", size: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .padding()
                             .alert(isPresented: $gestureOnOne) {
                                 Alert(
@@ -58,13 +58,13 @@ struct ChooseChat: View {
 //                            }
 //                            .navigationBarBackButtonHidden(true)
 //                            .frame(width: 100, height: 45)
-//                            .border(.gray)
+//                            .border(.white)
 //                            .font(.custom("American typewriter", size: 19))
 //                            .foregroundColor(.white)
 //                            .padding()
 //                        }
                     }
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                 }
                 List(people, id: \.self) { people in
                     Button {
@@ -88,7 +88,7 @@ struct ChooseChat: View {
             }
         }
         .background(Image("Background"))
-        .foregroundColor(.gray)
+        .foregroundColor(.white)
         
         
     }

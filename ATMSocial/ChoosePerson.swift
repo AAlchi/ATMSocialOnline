@@ -44,7 +44,7 @@ struct ChoosePerson: View {
                                             TextField("", text: $displaysName)
                                                 .frame(width: geometry.size.width * 0.7)
                                                 .textFieldStyle(.roundedBorder)
-                                                .border(Color.gray)
+                                                .border(.white)
                                                 .foregroundColor(.black)
                                         }
                                         .foregroundColor(.black)
@@ -81,7 +81,7 @@ struct ChoosePerson: View {
                         }
                             .frame(width: geometry.size.width * 1)
                             .background(Image("Background"))
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
                         
                     }
     
@@ -133,7 +133,7 @@ struct ChoosePerson: View {
                         
                     }
                 }
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             }
             List(people, id: \.self) { people in
                 Button {

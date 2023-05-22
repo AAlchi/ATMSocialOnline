@@ -20,16 +20,15 @@ struct Option: View {
                             .padding()
                         Text("A secure way to chat")
                             .font(.custom("American Typewriter", size: 16))
-                            
                     }
                     .padding()
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                     NavigationLink("Chat Now") {
                         ChooseChat()
                     }
                     .frame(width: geometry.size.width * 0.40, height: 60)
-                    .border(.black)
-                    .foregroundColor(.black)
+                    .border(.white)
+                    .foregroundColor(.white)
                     .font(.custom("American Typewriter", size: 25))
                     
                     
