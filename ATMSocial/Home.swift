@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseDatabase
+import UserNotifications
 
 struct Chat: Hashable {
     let id = UUID()
@@ -19,6 +20,22 @@ struct Chat: Hashable {
 }
 
 struct Home: View {
+    
+    func notify() {
+        let conn = UNMutableNotificationContent()
+        
+        conn.title = "ATM Social Message"
+        conn.body = "New Chat On ATM Social"
+        conn.sound = UNNotificationSound.default
+        
+        let req = UNNotificationRequest(identifier: UUID().uuidString, content: conn, trigger: nil)
+        
+        
+        UNUserNotificationCenter.current().add(req) { err in
+            print("")
+        }
+        
+    }
     
     @State var chats: [Chat] = []
     @State var bool = false
@@ -49,6 +66,9 @@ struct Home: View {
                         let chat = Chat(dateSent: dateSent, receiver: receiver, sender: sender, text: text, type: type)
                         
                         chats.append(chat)
+                        
+                        notify()
+
                     }
                 }
             }
@@ -166,7 +186,8 @@ struct Home: View {
                             
                            
                             chats.removeAll()
-                            
+                            notify()
+
                             withAnimation {
                                 proxy.scrollTo(chats.last?.id, anchor: .bottom)
                             }
@@ -186,6 +207,8 @@ struct Home: View {
                     }
                     .onAppear {
                         chats.removeAll()
+                        notify()
+
                         
                         withAnimation {
                             proxy.scrollTo(bottomPageScroll)
