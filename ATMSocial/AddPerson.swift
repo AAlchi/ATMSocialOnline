@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct AddPerson: View {
 //    @AppStorage("Friends") var friends: [String] = []
     @State var newPerson = ""

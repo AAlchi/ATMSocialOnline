@@ -44,7 +44,7 @@ struct ChoosePerson: View {
                                             TextField("", text: $displaysName)
                                                 .frame(width: geometry.size.width * 0.7)
                                                 .textFieldStyle(.roundedBorder)
-                                                .border(Color.gray)
+                                                .border(.white)
                                                 .foregroundColor(.black)
                                         }
                                         .foregroundColor(.black)
@@ -60,7 +60,7 @@ struct ChoosePerson: View {
                                         .foregroundColor(.white)
                                         .font(.custom("American Typewriter", size: 20))
                                         .padding()
-                                        .border(Color.gray)
+                                        .border(Color.white)
                                         .popover(isPresented: $contractOn) {
                                             Terms()
                                             Button("Agree") {
@@ -118,9 +118,9 @@ struct ChoosePerson: View {
                         }
                         .frame(width: 100, height: 35)
                         .foregroundColor(.white)
-                        .font(.custom("American Typewriter", size: 15))
+                        .font(.custom("American Typewriter", size: 20))
                         .padding()
-                        .border(Color.gray)
+                        .border(Color.white)
                         .popover(isPresented: $contractOn) {
                             Terms()
                             Button("Agree") {

@@ -124,7 +124,7 @@ struct Home: View {
                                                 .frame(width: 500)
                                                 .padding()
                                                 .font(.system(size: 20))
-                                                .foregroundColor(Color.white)
+                                                .foregroundColor(.white)
                                                 .background(Color.green)
                                                 .cornerRadius(20)
                                                 .gesture(
@@ -152,7 +152,7 @@ struct Home: View {
                                                 .frame(width: 500)
                                                 .padding()
                                                 .font(.system(size: 20))
-                                                .foregroundColor(Color.white)
+                                                .foregroundColor(.white)
                                                 .background(Color.blue)
                                                 .cornerRadius(20)
                                                 .gesture(

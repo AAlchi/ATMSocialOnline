@@ -40,7 +40,7 @@ struct LogIn: View {
                 ) {
                     Text("Log In")
                         .frame(width: 150, height: 75)
-                        .background(.gray)
+                        .background(.white)
                         .foregroundColor(.black)
                         .font(.custom("American Typewriter", size: 25))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
