@@ -57,10 +57,10 @@ struct ChoosePerson: View {
                                             
                                         }
                                         .frame(width: geometry.size.width * 0.4, height: 25)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(.white)
                                         .font(.custom("American Typewriter", size: 20))
                                         .padding()
-                                        .border(Color.black)
+                                        .border(Color.white)
                                         .popover(isPresented: $contractOn) {
                                             Terms()
                                             Button("Agree") {
@@ -117,10 +117,10 @@ struct ChoosePerson: View {
                             Text("Add User")
                         }
                         .frame(width: 100, height: 35)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .font(.custom("American Typewriter", size: 20))
                         .padding()
-                        .border(Color.black)
+                        .border(Color.white)
                         .popover(isPresented: $contractOn) {
                             Terms()
                             Button("Agree") {

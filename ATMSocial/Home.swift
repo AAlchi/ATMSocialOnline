@@ -29,11 +29,14 @@ struct Home: View {
         conn.sound = UNNotificationSound.default
         
         let req = UNNotificationRequest(identifier: UUID().uuidString, content: conn, trigger: nil)
-        
-        
-        UNUserNotificationCenter.current().add(req) { err in
-            print("")
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (yes, err) in
+            UNUserNotificationCenter.current().add(req) { err in
+                
+                print("Notification request added successfully")
+                
+            }
         }
+        
         
     }
     
@@ -186,7 +189,15 @@ struct Home: View {
                             
                            
                             chats.removeAll()
+                            
+                            
                             notify()
+                            
+                            if (bool == false) {
+                                notify()
+                            } else {
+                                print("We Can't Notify You Right Now")
+                            }
 
                             withAnimation {
                                 proxy.scrollTo(chats.last?.id, anchor: .bottom)
@@ -237,6 +248,7 @@ struct Home: View {
                         Button(action: {
                             let timedate = Date()
                             
+                            notify()
                             
                             let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
                             
