@@ -21,25 +21,25 @@ struct Chat: Hashable {
 
 struct Home: View {
     
+  
+
     func notify() {
-        let conn = UNMutableNotificationContent()
+        let content = UNMutableNotificationContent()
+        content.title = "ATM Social Message"
+        content.body = "You Have A New Chat on ATM Social"
+        content.sound = UNNotificationSound.default
         
-        conn.title = "ATM Social Message"
-        conn.body = "New Chat On ATM Social"
-        conn.sound = UNNotificationSound.default
+        let trig = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        let req = UNNotificationRequest(identifier: UUID().uuidString, content: conn, trigger: nil)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (yes, err) in
-            UNUserNotificationCenter.current().add(req) { err in
-                
-                print("Notification request added successfully")
-                
+        let req = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trig)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            UNUserNotificationCenter.current().add(req) { (error) in
+                print("We Got To This Point Of The Code")
             }
         }
-        
-        
     }
-    
+
     @State var chats: [Chat] = []
     @State var bool = false
     @Namespace var bottomPageScroll
@@ -70,7 +70,6 @@ struct Home: View {
                         
                         chats.append(chat)
                         
-                        notify()
 
                     }
                 }
@@ -109,8 +108,8 @@ struct Home: View {
                         Spacer()
                         VStack {
                                 
-                            Button("") {
-                                
+                            Button("Push") {
+                                notify()
                             }
                             .id(bottomPageScroll)
                             
@@ -191,13 +190,6 @@ struct Home: View {
                             chats.removeAll()
                             
                             
-                            notify()
-                            
-                            if (bool == false) {
-                                notify()
-                            } else {
-                                print("We Can't Notify You Right Now")
-                            }
 
                             withAnimation {
                                 proxy.scrollTo(chats.last?.id, anchor: .bottom)
@@ -218,7 +210,6 @@ struct Home: View {
                     }
                     .onAppear {
                         chats.removeAll()
-                        notify()
 
                         
                         withAnimation {
@@ -248,7 +239,6 @@ struct Home: View {
                         Button(action: {
                             let timedate = Date()
                             
-                            notify()
                             
                             let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
                             

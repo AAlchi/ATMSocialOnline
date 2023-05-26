@@ -42,6 +42,7 @@
 		8C8780EE2A16BA0D009D5C00 /* AddPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPerson.swift; sourceTree = "<group>"; };
 		8CE6C2E82A14125E00AC3272 /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
 		C90C0B962A157C6A00541931 /* ChoosePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePerson.swift; sourceTree = "<group>"; };
+		C9B124922A214153001FE169 /* ATMSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ATMSocial.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 		47AEF3E92A13E95800504177 /* ATMSocial */ = {
 			isa = PBXGroup;
 			children = (
+				C9B124922A214153001FE169 /* ATMSocial.entitlements */,
 				8C8780EE2A16BA0D009D5C00 /* AddPerson.swift */,
 				47AEF4022A13EAE500504177 /* ChatFunction.swift */,
 				47AEF4072A13EAE500504177 /* ChooseChat.swift */,
@@ -318,10 +320,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ATMSocial/ATMSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ATMSocial/Preview Content\"";
-				DEVELOPMENT_TEAM = 9F53D3M6K3;
+				DEVELOPMENT_TEAM = BWYT76Q3DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -334,7 +337,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = project.atmsocial3;
+				PRODUCT_BUNDLE_IDENTIFIER = project.atmsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -347,10 +350,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ATMSocial/ATMSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ATMSocial/Preview Content\"";
-				DEVELOPMENT_TEAM = 9F53D3M6K3;
+				DEVELOPMENT_TEAM = BWYT76Q3DS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -363,7 +367,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = project.atmsocial3;
+				PRODUCT_BUNDLE_IDENTIFIER = project.atmsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
