@@ -14,7 +14,7 @@ struct Terms: View {
                 VStack {
                     HStack {
                         Text("Terms & Conditions")
-                            .font(.system(size: geometry.size.width * 0.1))
+                            .font(.custom("American Typewriter", size: 20))
                             .padding()
                     }
                   

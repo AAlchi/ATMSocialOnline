@@ -67,6 +67,7 @@ struct ChoosePerson: View {
                                                 contractOn = false
                                                 contract = true
                                             }
+                                            .frame(width: 900, height: 900)
                                             .foregroundColor(.black)
 
                                         }
@@ -127,6 +128,7 @@ struct ChoosePerson: View {
                                 contractOn = false
                                 contract = true
                             }
+                            .frame(width: 230, height: 35)
                             .foregroundColor(.black)
 
                         }
