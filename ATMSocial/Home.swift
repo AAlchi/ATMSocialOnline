@@ -104,11 +104,9 @@ struct Home: View {
                 }
                 Divider()
                 ScrollViewReader { proxy in
-                    
                     ScrollView(){
                         Spacer()
                         VStack {
-                                
                             Button("") {
                                 
                             }
@@ -219,9 +217,7 @@ struct Home: View {
                     .onAppear {
                         chats.removeAll()
                         notify()
-
-                        
-                        withAnimation {
+                            withAnimation {
                             proxy.scrollTo(bottomPageScroll)
                         }
                         
