@@ -21,8 +21,8 @@ struct Chat: Hashable {
 
 struct Home: View {
     
-  
-
+    
+    
     func notify() {
         let content = UNMutableNotificationContent()
         content.title = "ATM Social Message"
@@ -39,22 +39,22 @@ struct Home: View {
             }
         }
     }
-
+    
     @State var chats: [Chat] = []
     @State var bool = false
     @Namespace var bottomPageScroll
     @Namespace var topPageScroll
-
+    
     @AppStorage("displayName") var displayName = ""
-
-
+    
+    
     
     
     
     func loadDataFromFirebase() {
         let database = Database.database().reference()
         database.child("chats").observe(.value) { snapshot in
-
+            
             chats.removeAll()
             
             if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
@@ -70,7 +70,7 @@ struct Home: View {
                         
                         chats.append(chat)
                         
-
+                        
                     }
                 }
             }
@@ -78,7 +78,7 @@ struct Home: View {
             print("These are now the chats: \(chats)")
         }
     }
-
+    
     
     //database
     let thedb = Database.database().reference()
@@ -90,8 +90,8 @@ struct Home: View {
     
     @State var chattingWith:String
     @State var date = ""
-
-
+    
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -108,33 +108,34 @@ struct Home: View {
                         VStack {
                             Button("") {
                                 
-                            Button("Push") {
-                                notify()
-                            }
-                            .id(bottomPageScroll)
-                            
-                            ForEach(chats, id: \.self) {messages in
-                                HStack {
-                                    if (messages.sender != displayName) {
-                                        HStack {
-                                            
-                                            Text("\(date)")
-                                            Text("\(messages.sender): \(messages.text)")
-                                                .frame(width: 500)
-                                                .padding()
-                                                .font(.system(size: 20))
-                                                .foregroundColor(.white)
-                                                .background(Color.green)
-                                                .cornerRadius(20)
-                                                .gesture(
-                                                    DragGesture()
-                                                        .onEnded { action in
-                                                            withAnimation {
-                                                                
-                                                                if action.translation.width > 0 {
-                                                                    date = "Date: \(messages.dateSent)"
-                                                                } else {
-                                                                    date = ""
+//                                Button("Push") {
+//                                    notify()
+//                                }
+//                                .id(bottomPageScroll)
+                                
+                                ForEach(chats, id: \.self) { messages in
+                                    HStack {
+                                        if (messages.sender != displayName) {
+                                            HStack {
+                                                
+                                                Text("\(date)")
+                                                Text("\(messages.sender): \(messages.text)")
+                                                    .frame(width: 500)
+                                                    .padding()
+                                                    .font(.system(size: 20))
+                                                    .foregroundColor(.white)
+                                                    .background(Color.green)
+                                                    .cornerRadius(20)
+                                                    .gesture(
+                                                        DragGesture()
+                                                            .onEnded { action in
+                                                                withAnimation {
+                                                                    
+                                                                    if action.translation.width > 0 {
+                                                                        date = "Date: \(messages.dateSent)"
+                                                                    } else {
+                                                                        date = ""
+                                                                    }
                                                                 }
                                                             }
                                                             
@@ -160,111 +161,126 @@ struct Home: View {
                                                             withAnimation {
                                                                 
                                                                 
-                                                                if action.translation.width < 0 {
-                                                                    date = "Date: \(messages.dateSent)"
-                                                                } else {
-                                                                    date = ""
+                                                            }
+                                                    )
+                                                
+                                            }
+                                            .padding()
+                                            Spacer()
+                                        } else {
+                                            HStack {
+                                                Spacer()
+                                                Text("\(messages.text)")
+                                                    .frame(width: 500)
+//                                                    .rotationEffect(.degrees(180), anchor: .topLeading)
+                                                    .padding()
+                                                    .font(.system(size: 20))
+                                                    .foregroundColor(.white)
+                                                    .background(Color.blue)
+                                                    .cornerRadius(20)
+                                                    .gesture(
+                                                        DragGesture()
+                                                            .onEnded { action in
+                                                                withAnimation {
+                                                                    
+                                                                    
+                                                                    if action.translation.width < 0 {
+                                                                        date = "Date: \(messages.dateSent)"
+                                                                    } else {
+                                                                        date = ""
+                                                                    }
                                                                 }
                                                             }
-                                                        }
-                                                )
-                                            Text("\(date)")
+                                                    )
+                                                Text("\(date)")
+                                                
+                                            }
+                                            
+                                            
                                             
                                         }
-                                        
-                                        
-                                        
                                     }
+                                    
+                                }
+                            }
+                            .padding()
+                            .onAppear {
+                                chats.removeAll()
+                                withAnimation {
+                                    proxy.scrollTo(chats.last?.id, anchor: .bottom)
                                 }
                                 
+                                loadDataFromFirebase()
                             }
-
                             
-                            .padding()
-                            Spacer()
+                            Button("") {
+                            }
+                            .id(bottomPageScroll)
+                            
                         }
-                        .padding()
+                        .onTapGesture {
+                            withAnimation {
+                                proxy.scrollTo(bottomPageScroll)
+                            }
+                        }
                         .onAppear {
-                            
-                           
                             chats.removeAll()
-                            
-                            
-
+                            notify()
                             withAnimation {
-                                proxy.scrollTo(chats.last?.id, anchor: .bottom)
+                                proxy.scrollTo(bottomPageScroll)
                             }
                             
-                            loadDataFromFirebase()
+                            
                         }
                         
-                        Button("") {
-                        }
-                        .id(bottomPageScroll)
+                        
                         
                     }
-                    .onTapGesture {
-                        withAnimation {
-                            proxy.scrollTo(bottomPageScroll)
+                    HStack {
+                        TextField("Chat Away", text: $message)
+                            .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.3)
+                            .font(.custom("American Typewriter", size: 20))
+                            .textFieldStyle(.roundedBorder)
+                            .onSubmit {
+                                let timedate = Date()
+                                let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
+                                let newthedb = thedb.child("chats")
+                                let newnewthedb = newthedb.childByAutoId()
+                                newnewthedb.setValue(allTheData)
+                                message = ""
+                            }
+                        ZStack {
+                            Button(action: {
+                                let timedate = Date()
+                                
+                                
+                                let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
+                                
+                                let newthedb = thedb.child("chats")
+                                let newnewthedb = newthedb.childByAutoId()
+                                newnewthedb.setValue(allTheData)
+                                message = ""
+                                
+                            }, label: {
+                                Image(systemName: "arrow.up")
+                                    .font(.system(size: geometry.size.width * 0.04))
+                            })
+                            .frame(width: geometry.size.width * 0.06, height: geometry.size.width * 0.06)
+                            .background(.blue)
+                            .cornerRadius(geometry.size.width * 1)
+                            .foregroundColor(.white)
+                            .padding()
+                            
                         }
-                    }
-                    .onAppear {
-                        chats.removeAll()
-                        notify()
-                            withAnimation {
-                            proxy.scrollTo(bottomPageScroll)
-                        }
-                        
-                       
                     }
                     
                     
                     
                 }
-                HStack {
-                    TextField("Chat Away", text: $message)
-                        .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.3)
-                        .font(.custom("American Typewriter", size: 20))
-                        .textFieldStyle(.roundedBorder)
-                        .onSubmit {
-                            let timedate = Date()
-                            let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
-                            let newthedb = thedb.child("chats")
-                            let newnewthedb = newthedb.childByAutoId()
-                            newnewthedb.setValue(allTheData)
-                            message = ""
-                        }
-                    ZStack {
-                        Button(action: {
-                            let timedate = Date()
-                            
-                            
-                            let allTheData = ["reciever": "\(chattingWith)", "sender": "\(displayName)", "text": "\(message)", "dateSent": "\(timedate)", "type": "1"]
-                            
-                            let newthedb = thedb.child("chats")
-                            let newnewthedb = newthedb.childByAutoId()
-                            newnewthedb.setValue(allTheData)
-                            message = ""
-                            
-                        }, label: {
-                            Image(systemName: "arrow.up")
-                                .font(.system(size: geometry.size.width * 0.04))
-                        })
-                        .frame(width: geometry.size.width * 0.06, height: geometry.size.width * 0.06)
-                        .background(.blue)
-                        .cornerRadius(geometry.size.width * 1)
-                        .foregroundColor(.white)
-                        .padding()
-                       
-                    }
-                }
-              
-                
-                
             }
         }
+        
     }
-    
 }
 
 
