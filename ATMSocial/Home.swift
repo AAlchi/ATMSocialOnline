@@ -247,7 +247,6 @@ struct Home: View {
                             .cornerRadius(geometry.size.width * 1)
                             .foregroundColor(.white)
                             .padding()
-                            
                         }
                     }
                 }
