@@ -148,9 +148,9 @@ struct Home: View {
                                         HStack {
                                             Spacer()
                                             Text("\(messages.text)")
-                                                .frame(width: 500)
+                                                .frame(width: 400)
                                                 .padding()
-                                                .font(.system(size: 20))
+                                                .font(.system(size: 10))
                                                 .foregroundColor(.white)
                                                 .background(Color.blue)
                                                 .cornerRadius(20)
@@ -266,5 +266,6 @@ struct Home: View {
     }
     
 }
+
 
 
