@@ -137,6 +137,29 @@ struct Home: View {
                                                                         date = ""
                                                                     }
                                                                 }
+                                                            }
+                                                            
+                                                        }
+                                                )
+                                            
+                                        }
+                                        .padding()
+                                        Spacer()
+                                    } else {
+                                        HStack {
+                                            Spacer()
+                                            Text("\(messages.text)")
+                                                .frame(width: 400)
+                                                .padding()
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.white)
+                                                .background(Color.blue)
+                                                .cornerRadius(20)
+                                                .gesture(
+                                                    DragGesture()
+                                                        .onEnded { action in
+                                                            withAnimation {
+                                                                
                                                                 
                                                             }
                                                     )
@@ -255,3 +278,6 @@ struct Home: View {
         
     }
 }
+
+
+
