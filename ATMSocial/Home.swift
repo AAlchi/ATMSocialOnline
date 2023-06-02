@@ -171,12 +171,28 @@ struct Home: View {
                                             Text("\(date)")
                                             
                                         }
-                                        
-                                        
-                                        
                                     }
+                                    
+                                }
+                            }
+                            .padding()
+                            .onAppear {
+                                chats.removeAll()
+                                withAnimation {
+                                    proxy.scrollTo(chats.last?.id, anchor: .bottom)
                                 }
                                 
+                                loadDataFromFirebase()
+                            }
+                            
+                            Button("") {
+                            }
+                            .id(bottomPageScroll)
+                            
+                        }
+                        .onTapGesture {
+                            withAnimation {
+                                proxy.scrollTo(bottomPageScroll)
                             }
                             
                             
@@ -264,8 +280,9 @@ struct Home: View {
                 
             }
         }
+        
     }
-    
 }
+
 
 
