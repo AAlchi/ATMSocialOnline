@@ -21,8 +21,8 @@ struct Chat: Hashable {
 
 struct Home: View {
     
-  
-
+    
+    
     func notify() {
         let content = UNMutableNotificationContent()
         content.title = "ATM Social Message"
@@ -39,22 +39,22 @@ struct Home: View {
             }
         }
     }
-
+    
     @State var chats: [Chat] = []
     @State var bool = false
     @Namespace var bottomPageScroll
     @Namespace var topPageScroll
-
+    
     @AppStorage("displayName") var displayName = ""
-
-
+    
+    
     
     
     
     func loadDataFromFirebase() {
         let database = Database.database().reference()
         database.child("chats").observe(.value) { snapshot in
-
+            
             chats.removeAll()
             
             if let snapShotArray = snapshot.children.allObjects as? [DataSnapshot] {
@@ -70,7 +70,7 @@ struct Home: View {
                         
                         chats.append(chat)
                         
-
+                        
                     }
                 }
             }
@@ -78,7 +78,7 @@ struct Home: View {
             print("These are now the chats: \(chats)")
         }
     }
-
+    
     
     //database
     let thedb = Database.database().reference()
@@ -90,8 +90,8 @@ struct Home: View {
     
     @State var chattingWith:String
     @State var date = ""
-
-
+    
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -107,7 +107,7 @@ struct Home: View {
                     ScrollView(){
                         Spacer()
                         VStack {
-                                
+                            
                             Button("Push") {
                                 notify()
                             }
@@ -178,7 +178,7 @@ struct Home: View {
                                 }
                                 
                             }
-
+                            
                             
                             .padding()
                             Spacer()
@@ -186,11 +186,11 @@ struct Home: View {
                         .padding()
                         .onAppear {
                             
-                           
+                            
                             chats.removeAll()
                             
                             
-
+                            
                             withAnimation {
                                 proxy.scrollTo(chats.last?.id, anchor: .bottom)
                             }
@@ -210,13 +210,13 @@ struct Home: View {
                     }
                     .onAppear {
                         chats.removeAll()
-
+                        
                         
                         withAnimation {
                             proxy.scrollTo(bottomPageScroll)
                         }
                         
-                       
+                        
                     }
                     
                     
@@ -256,10 +256,10 @@ struct Home: View {
                         .cornerRadius(geometry.size.width * 1)
                         .foregroundColor(.white)
                         .padding()
-                       
+                        
                     }
                 }
-              
+                
                 
                 
             }
