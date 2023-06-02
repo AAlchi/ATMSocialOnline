@@ -68,8 +68,8 @@ struct Home: View {
                         
                         let chat = Chat(dateSent: dateSent, receiver: receiver, sender: sender, text: text, type: type)
                         
-                       
-                            chats.append(chat)
+                        
+                        chats.append(chat)
                         
                         
                         
@@ -78,7 +78,7 @@ struct Home: View {
                 }
             }
             
-//            print("These are now the chats: \(chats)")
+            //            print("These are now the chats: \(chats)")
         }
     }
     
@@ -109,14 +109,14 @@ struct Home: View {
                     
                     ScrollView(){
                         Spacer()
-                         VStack {
+                        VStack {
                             
                             Button("Push") {
                                 notify()
                             }
                             .id(bottomPageScroll)
                             
-                            ForEach(chats, id: \.self) {messages in
+                            ForEach(chats, id: \.self) { messages in
                                 HStack {
                                     if (messages.sender != displayName) {
                                         HStack {
@@ -128,6 +128,7 @@ struct Home: View {
                                                 .font(.system(size: 20))
                                                 .foregroundColor(.white)
                                                 .background(Color.green)
+                                                .flippedUpsideDown()
                                                 .cornerRadius(20)
                                                 .gesture(
                                                     DragGesture()
@@ -156,6 +157,7 @@ struct Home: View {
                                                 .font(.system(size: 20))
                                                 .foregroundColor(.white)
                                                 .background(Color.blue)
+                                                .flippedUpsideDown()
                                                 .cornerRadius(20)
                                                 .gesture(
                                                     DragGesture()
@@ -178,9 +180,10 @@ struct Home: View {
                                     
                                 }
                             }
+                            .flippedUpsideDown()
                             .padding()
                             .onAppear {
-//                                chats.removeAll() has betrayed us
+                                //                                chats.removeAll() has betrayed us
                                 withAnimation {
                                     proxy.scrollTo(chats.last?.id, anchor: .bottom)
                                 }
@@ -284,5 +287,15 @@ struct Home: View {
     }
 }
 
-
-
+struct FlippedUpsideDown: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(.radians(.pi))
+            .scaleEffect(x: -1, y: 1, anchor: .center)
+    }
+}
+extension View{
+    func flippedUpsideDown() -> some View{
+        self.modifier(FlippedUpsideDown())
+    }
+}
