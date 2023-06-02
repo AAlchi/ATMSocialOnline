@@ -68,14 +68,17 @@ struct Home: View {
                         
                         let chat = Chat(dateSent: dateSent, receiver: receiver, sender: sender, text: text, type: type)
                         
-                        chats.append(chat)
+                       
+                            chats.append(chat)
+                        
+                        
                         
                         
                     }
                 }
             }
             
-            print("These are now the chats: \(chats)")
+//            print("These are now the chats: \(chats)")
         }
     }
     
@@ -106,7 +109,7 @@ struct Home: View {
                     
                     ScrollView(){
                         Spacer()
-                        VStack {
+                         VStack {
                             
                             Button("Push") {
                                 notify()
@@ -177,7 +180,7 @@ struct Home: View {
                             }
                             .padding()
                             .onAppear {
-                                chats.removeAll()
+//                                chats.removeAll() has betrayed us
                                 withAnimation {
                                     proxy.scrollTo(chats.last?.id, anchor: .bottom)
                                 }
@@ -195,9 +198,6 @@ struct Home: View {
                                 proxy.scrollTo(bottomPageScroll)
                             }
                             
-                            
-                            .padding()
-                            Spacer()
                         }
                         .padding()
                         .onAppear {
